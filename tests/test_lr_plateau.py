@@ -3,12 +3,12 @@ from hyperopt import Trials, STATUS_OK, tpe
 from hyperas import optim
 from hyperas.distributions import choice
 
-from keras.models import Sequential
-from keras.layers import Dense, Activation
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Activation
 
-from keras.datasets import mnist
-from keras.utils import np_utils
-from keras.callbacks import ReduceLROnPlateau, EarlyStopping
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras import utils
+from tensorflow.keras.callbacks import ReduceLROnPlateau, EarlyStopping
 
 
 def data():
@@ -20,8 +20,8 @@ def data():
     x_train /= 255
     x_test /= 255
     nb_classes = 10
-    y_train = np_utils.to_categorical(y_train, nb_classes)
-    y_test = np_utils.to_categorical(y_test, nb_classes)
+    y_train = utils.to_categorical(y_train, nb_classes)
+    y_test = utils.to_categorical(y_test, nb_classes)
     return x_train, y_train, x_test, y_test
 
 

@@ -1,5 +1,5 @@
 import numpy as np
-from keras.models import model_from_yaml
+from tensorflow.keras.models import model_from_yaml
 
 
 class VotingModel(object):

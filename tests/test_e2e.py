@@ -3,12 +3,12 @@ from hyperopt import Trials, STATUS_OK, tpe
 from hyperas import optim
 from hyperas.distributions import choice, uniform
 
-from keras.models import Sequential
-from keras.layers.core import Dense, Dropout, Activation
-from keras.optimizers import RMSprop
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Dropout, Activation
+from tensorflow.keras.optimizers import RMSprop
 
-from keras.datasets import mnist
-from keras.utils import np_utils
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras import utils
 from hyperopt import rand
 
 
@@ -21,8 +21,8 @@ def data():
     X_train /= 255
     X_test /= 255
     nb_classes = 10
-    Y_train = np_utils.to_categorical(y_train, nb_classes)
-    Y_test = np_utils.to_categorical(y_test, nb_classes)
+    Y_train = utils.to_categorical(y_train, nb_classes)
+    Y_test = utils.to_categorical(y_test, nb_classes)
     return X_train, Y_train, X_test, Y_test
 
 
@@ -70,8 +70,8 @@ def ensemble_data():
     X_test = X_test.astype('float32')
     X_train /= 255
     X_test /= 255
-    Y_train = np_utils.to_categorical(y_train, nb_classes)
-    Y_test = np_utils.to_categorical(y_test, nb_classes)
+    Y_train = utils.to_categorical(y_train, nb_classes)
+    Y_test = utils.to_categorical(y_test, nb_classes)
     return X_train, X_test, Y_train, Y_test
 
 
